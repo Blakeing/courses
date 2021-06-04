@@ -24,7 +24,7 @@ const DashboardPage = ({ plans, dbUser }) => {
         </button>
         <h2 className="text-3xl font-md mt-4 mb-2">Purchased courses</h2>
         {dbUser.courses.map(({ title, slug }) => (
-          <Link href={`/${slug}`} key={slug}>
+          <Link href={`/course/${slug}`} key={slug}>
             <a className="mx-4">{title}</a>
           </Link>
         ))}
