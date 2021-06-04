@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/dijonmusters/courses.git"
   },
+  "browser": {
+    "child_process": false
+  },
   "author": "Jon Meyers",
   "license": "ISC",
   "bugs": {
