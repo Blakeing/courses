@@ -5,7 +5,8 @@ module.exports = {
     webpack: config => {
       config.resolve.fallback = {
         child_process: 'empty',
-        "crypto": false 
+        "crypto": false,
+        "http": false
       };
       return config;
     },
