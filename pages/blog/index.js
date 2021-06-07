@@ -3,9 +3,6 @@ import { Config } from '@utils/Config'
 import PageMeta from '@components/PageMeta'
 import PostList from '@components/PostList'
 import MainLayout from '@layouts/main'
-import { useRouter } from 'next/router'
-import { getSession } from 'next-auth/client'
-import { useEffect, useState } from 'react'
 
 export default function BlogIndex(props) {
   const { postSummaries, currentPage, totalPages, pageContent, preview } = props
