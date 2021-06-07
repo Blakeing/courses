@@ -46,7 +46,8 @@
     "react-dom": "^17.0.1",
     "react-player": "^2.9.0",
     "react-query": "^3.16.1",
-    "stripe": "^8.138.0"
+    "stripe": "^8.138.0",
+    "react-markdown": "^6.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.4",
