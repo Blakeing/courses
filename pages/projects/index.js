@@ -1,26 +1,28 @@
-import { createClient } from "contentful";
-import MainLayout from "layouts/main";
-import ProjectCard from "../../components/ProjectCard";
+import { createClient } from 'contentful'
+import MainLayout from 'layouts/main'
+import ProjectCard from '../../components/ProjectCard'
+import Breadcrumbs from 'nextjs-breadcrumbs'
 
 export async function getStaticProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
+  })
 
-  const res = await client.getEntries({ content_type: "project" });
+  const res = await client.getEntries({ content_type: 'project' })
 
   return {
     props: {
       projects: res.items,
     },
     revalidate: 1,
-  };
+  }
 }
 
 export default function projects({ projects }) {
   return (
     <MainLayout>
+      <Breadcrumbs />
       <div className="my-16 container mx-auto px-8">
         <ul
           role="list"
@@ -32,5 +34,5 @@ export default function projects({ projects }) {
         </ul>
       </div>
     </MainLayout>
-  );
+  )
 }

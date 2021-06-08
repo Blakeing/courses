@@ -1,67 +1,69 @@
-import { createClient } from "contentful";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Image from "next/image";
-import Skeleton from "../../components/Skeleton";
-import MainLayout from "layouts/main";
+import { createClient } from 'contentful'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Image from 'next/image'
+import Skeleton from '../../components/Skeleton'
+import MainLayout from 'layouts/main'
+import Breadcrumbs from 'nextjs-breadcrumbs'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
+})
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({
-    content_type: "project",
-  });
+    content_type: 'project',
+  })
 
   const paths = res.items.map((item) => {
     return {
       params: { slug: item.fields.slug },
-    };
-  });
+    }
+  })
 
   return {
     paths,
     fallback: true,
-  };
-};
+  }
+}
 
 const stats = [
-  { label: "Founded", value: "2021" },
-  { label: "Employees", value: "5" },
-  { label: "Beta Users", value: "521" },
-  { label: "Raised", value: "$25M" },
-];
+  { label: 'Founded', value: '2021' },
+  { label: 'Employees', value: '5' },
+  { label: 'Beta Users', value: '521' },
+  { label: 'Raised', value: '$25M' },
+]
 
 export const getStaticProps = async ({ params }) => {
   const { items } = await client.getEntries({
-    content_type: "project",
-    "fields.slug": params.slug,
-  });
+    content_type: 'project',
+    'fields.slug': params.slug,
+  })
 
   if (!items.length) {
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
       },
-    };
+    }
   }
 
   return {
     props: { project: items[0] },
     revalidate: 1,
-  };
-};
+  }
+}
 
 export default function ProjectDetails({ project }) {
-  if (!project) return <Skeleton />;
+  if (!project) return <Skeleton />
 
   const { featuredImage, title, cookingTime, ingredients, method } =
-    project.fields;
+    project.fields
 
   return (
     <MainLayout>
+      <Breadcrumbs />
       <div className="relative bg-white py-16 sm:py-24">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
           <div className="relative sm:py-16 lg:py-0">
@@ -108,7 +110,7 @@ export default function ProjectDetails({ project }) {
               <div className="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
                 <Image
                   className="absolute inset-0 h-full w-full object-cover"
-                  src={"https:" + featuredImage.fields.file.url}
+                  src={'https:' + featuredImage.fields.file.url}
                   layout="fill"
                 />
                 {/* <img
@@ -154,9 +156,9 @@ export default function ProjectDetails({ project }) {
               </dl>
               <div className="mt-10">
                 <a href="#" className="text-base font-medium text-indigo-600">
-                  {" "}
-                  Learn more about how we're changing the world{" "}
-                  <span aria-hidden="true">&rarr;</span>{" "}
+                  {' '}
+                  Learn more about how we're changing the world{' '}
+                  <span aria-hidden="true">&rarr;</span>{' '}
                 </a>
               </div>
             </div>
@@ -164,5 +166,5 @@ export default function ProjectDetails({ project }) {
         </div>
       </div>
     </MainLayout>
-  );
+  )
 }
