@@ -23,8 +23,6 @@ function EventDetailPage() {
   //   year: 'numeric',
   // })
 
-  const addressText = event.location.replace(', ', '\n')
-
   if (!event) {
     return (
       <ErrorAlert>
@@ -154,9 +152,6 @@ function EventDetailPage() {
             {/* <time className="mt-8 block text-center text-xl text-gray-500 leading-8">
               {humanReadableDate}
             </time> */}
-            <address className="text-xl text-center block text-gray-500 leading-8">
-              {addressText}
-            </address>
           </div>
           <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
             <figure>
