@@ -17,11 +17,12 @@ function EventDetailPage() {
   const eventId = router.query.eventId
   const event = getEventById(eventId)
 
-  const humanReadableDate = new Date(event.date).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
+  // const humanReadableDate = new Date(event.date).toLocaleDateString('en-US', {
+  //   day: 'numeric',
+  //   month: 'long',
+  //   year: 'numeric',
+  // })
+
   const addressText = event.location.replace(', ', '\n')
 
   if (!event) {
@@ -149,9 +150,10 @@ function EventDetailPage() {
                 {event.title}
               </span>
             </h1>
-            <time className="mt-8 block text-center text-xl text-gray-500 leading-8">
+
+            {/* <time className="mt-8 block text-center text-xl text-gray-500 leading-8">
               {humanReadableDate}
-            </time>
+            </time> */}
             <address className="text-xl text-center block text-gray-500 leading-8">
               {addressText}
             </address>

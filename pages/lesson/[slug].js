@@ -1,7 +1,7 @@
 import Container from 'components/Container'
 import Link from 'next/link'
 import { getSession } from '@auth0/nextjs-auth0'
-import axios from 'axios'
+
 import { PrismaClient } from '@prisma/client'
 import { processPayment } from 'utils/payment'
 import Player from 'react-player/lazy'
@@ -29,7 +29,10 @@ const LessonPage = ({
 
           <div className="mt-8 flex justify-center w-full">
             {videoUrl ? (
-              <div className="relative overflow-hidden w-full" style={{ paddingTop: '56.25%' }}>
+              <div
+                className="relative overflow-hidden w-full"
+                style={{ paddingTop: '56.25%' }}
+              >
                 <Player
                   className="absolute inset-0"
                   width="100%"
