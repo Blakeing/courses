@@ -1,9 +1,9 @@
 import { createClient } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
-import Skeleton from '../../components/Skeleton'
+import Skeleton from '@components/Skeleton'
 import MainLayout from 'layouts/main'
-import Breadcrumbs from 'nextjs-breadcrumbs'
+import Breadcrumbs from '@components/Breadcrumbs'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,

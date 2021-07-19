@@ -1,7 +1,7 @@
 import { createClient } from 'contentful'
 import MainLayout from 'layouts/main'
-import ProjectCard from '../../components/ProjectCard'
-import Breadcrumbs from 'nextjs-breadcrumbs'
+import ProjectCard from '@components/ProjectCard'
+import Breadcrumbs from '@components/Breadcrumbs'
 
 export async function getStaticProps() {
   const client = createClient({
